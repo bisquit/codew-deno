@@ -1,4 +1,5 @@
 import { join } from "$std/path/mod.ts";
+import { ensureDir } from "$std/fs";
 import home_dir from "dir/home_dir/mod.ts";
 import { match, P } from "ts-pattern";
 

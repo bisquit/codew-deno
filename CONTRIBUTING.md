@@ -12,7 +12,7 @@ deno task esm:add react
 ### Testing
 
 ```sh
-deno test --watch
+deno task test --watch
 ```
 
 ## publish
