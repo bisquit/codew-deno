@@ -1,6 +1,3 @@
-# codew
+# codew (next)
 
-## Credit
-
-This tool is written with [TypeScript](https://www.typescriptlang.org/) and
-[Deno](https://deno.com/runtime).
+Rewrite https://github.com/bisquit/codew.
