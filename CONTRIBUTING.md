@@ -3,10 +3,16 @@
 ```sh
 ```
 
+### Add npm dependencies
+
+```sh
+deno task esm:add react
+```
+
 ### Testing
 
 ```sh
-deno test --allow-env --watch
+deno test --watch
 ```
 
 ## publish

@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "$std/": "https://deno.land/std@0.192.0/",
+    "dir/": "https://deno.land/x/dir@1.5.1/",
+    "lowdb": "https://esm.sh/v126/*lowdb@6.0.1",
+    "lowdb/": "https://esm.sh/v126/*lowdb@6.0.1/",
+    "ts-pattern": "https://esm.sh/v126/ts-pattern@5.0.1"
+  },
+  "scopes": {
+    "https://esm.sh/v126/": {
+      "steno": "https://esm.sh/v126/steno@3.0.0"
+    }
+  }
+}
