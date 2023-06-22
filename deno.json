@@ -2,6 +2,8 @@
   "lock": false,
   "importMap": "import_map.json",
   "tasks": {
-    "test": "deno test --allow-env --allow-read --allow-write"
+    "dev": "deno run --allow-env --allow-read --allow-write --allow-run src/index.ts",
+    "test": "deno test --allow-env --allow-read --allow-write",
+    "compile": "deno compile --allow-env --allow-read --allow-write --allow-run --output bin/codew src/index.ts"
   }
 }

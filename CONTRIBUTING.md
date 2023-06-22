@@ -1,6 +1,7 @@
 ## develop
 
 ```sh
+deno task dev .
 ```
 
 ### Add npm dependencies
