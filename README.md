@@ -1,3 +1,3 @@
 # codew (next)
 
-Rewrite https://github.com/bisquit/codew.
+Rewrite https://github.com/bisquit/codew with Deno.
