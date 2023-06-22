@@ -3,8 +3,8 @@ import { JSONFile } from "lowdb/node";
 import { ensureDir } from "$std/fs";
 
 import { codewHomeDir } from "./context.ts";
+import { Workspace } from "./types.ts";
 
-export type Workspace = { path: string; workspace: string };
 export type Data = {
   workspaces: Workspace[];
 };
@@ -29,10 +29,10 @@ export async function insertWorkspace(workspace: Workspace) {
   await db.write();
 }
 
-export async function deleteWorkspace(workspacePath: string) {
+export async function deleteWorkspace(codeWorkspacePath: string) {
   const db = await getDb();
   db.data.workspaces = db.data.workspaces.filter(
-    (v) => v.workspace !== workspacePath,
+    (v) => v.codeWorkspacePath !== codeWorkspacePath,
   );
   await db.write();
 }

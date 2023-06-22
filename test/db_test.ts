@@ -9,8 +9,8 @@ import {
   dropWorkspaces,
   insertWorkspace,
   readWorkspaces,
-  Workspace,
 } from "../src/db.ts";
+import { Workspace } from "../src/types.ts";
 
 function resolveTestTmpDir() {
   return resolve("test-tmp", basename(import.meta.url));
@@ -32,12 +32,12 @@ describe("db", () => {
 
     // CREATE
     await insertWorkspace({
-      path: "a/b/c",
-      workspace: "d/tmp.vscode-workspace",
+      dirPath: "a/b/c",
+      codeWorkspacePath: "d/tmp.vscode-workspace",
     });
     await insertWorkspace({
-      path: "e/f/g",
-      workspace: "h/tmp.vscode-workspace",
+      dirPath: "e/f/g",
+      codeWorkspacePath: "h/tmp.vscode-workspace",
     });
 
     const decoder = new TextDecoder("utf-8");
@@ -46,20 +46,20 @@ describe("db", () => {
     const workspaces = data["workspaces"] as Workspace[];
     assertEquals(workspaces.length, 2);
 
-    const path = workspaces[0]["path"];
-    const workspace = workspaces[0]["workspace"];
-    assertEquals(path, "a/b/c");
-    assertEquals(workspace, "d/tmp.vscode-workspace");
+    const dirPath = workspaces.at(0)?.dirPath;
+    const codeWorkspacePath = workspaces.at(0)?.codeWorkspacePath;
+    assertEquals(dirPath, "a/b/c");
+    assertEquals(codeWorkspacePath, "d/tmp.vscode-workspace");
 
     // READ
     assertEquals(await readWorkspaces(), [
       {
-        path: "a/b/c",
-        workspace: "d/tmp.vscode-workspace",
+        dirPath: "a/b/c",
+        codeWorkspacePath: "d/tmp.vscode-workspace",
       },
       {
-        path: "e/f/g",
-        workspace: "h/tmp.vscode-workspace",
+        dirPath: "e/f/g",
+        codeWorkspacePath: "h/tmp.vscode-workspace",
       },
     ]);
 
@@ -67,8 +67,8 @@ describe("db", () => {
     await deleteWorkspace("d/tmp.vscode-workspace");
     assertEquals(await readWorkspaces(), [
       {
-        path: "e/f/g",
-        workspace: "h/tmp.vscode-workspace",
+        dirPath: "e/f/g",
+        codeWorkspacePath: "h/tmp.vscode-workspace",
       },
     ]);
 
